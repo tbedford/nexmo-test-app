@@ -5,8 +5,15 @@ from dotenv import load_dotenv
 
 app = Flask(__name__)
 
-nexmo_number = "+44-(0)7520635498"
+nexmo_number = "447520635498"
 audio_url = "https://raw.githubusercontent.com/tbedford/git-testing-repo/master/tunes/Komiku_Sunset_on_the_beach.mp3"
+
+if 'AUDIO_URL' in os.environ:
+    audio_url = os.environ['AUDIO_URL']
+    print("audio_url:" % audio_url)
+
+if 'NEXMO_NUMBER' in os.environ:
+    nexmo_number = os.environ['NEXMO_NUMBER']
 
 ncco = [
     {
@@ -15,12 +22,6 @@ ncco = [
         "streamUrl": [audio_url]
     }
 ]
-
-if 'AUDIO_URL' in os.environ:
-    audio_url = os.environ['AUDIO_URL']
-
-if 'NEXMO_NUMBER' in os.environ:
-    nexmo_number = os.environ['NEXMO_NUMBER']
     
 @app.route("/")
 def index():
