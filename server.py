@@ -1,8 +1,11 @@
+import os
 from flask import Flask, request, jsonify
 from pprint import pprint
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 
+nexmo_number = "+44-(0)7520635498"
 audio_url = "https://raw.githubusercontent.com/tbedford/git-testing-repo/master/tunes/Komiku_Sunset_on_the_beach.mp3"
 
 ncco = [
@@ -13,11 +16,15 @@ ncco = [
     }
 ]
 
-app = Flask(__name__)
+if 'AUDIO_URL' in os.environ:
+    audio_url = os.environ['AUDIO_URL']
 
+if 'NEXMO_NUMBER' in os.environ:
+    nexmo_number = os.environ['NEXMO_NUMBER']
+    
 @app.route("/")
 def index():
-    return "<p>Call +44-(0)7520635498 and listen to music...</p>"
+    return "<p>Call %s and listen to music...</p>" % nexmo_number
 
 @app.route("/webhooks/answer")
 def answer_call():
@@ -60,4 +67,5 @@ def delivery_receipt():
     return ("delivery_receipt", 200)
 
 if __name__ == '__main__':
+    load_dotenv()
     app.run(host="localhost", port=9000)

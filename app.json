@@ -1,0 +1,52 @@
+{
+  "name": "Nexmo Test App",
+  "description": "Nemxo Test App - call the Nexmo Number to hear music",
+  "repository": "https://github.com/tbedford/nexmo-test-app",
+  "logo": "https://avatars0.githubusercontent.com/u/551057?v=3&s=200",
+  "env": {
+    "CREATE_NEXMO_APP": {
+      "description": "Should the application automatically create a nexmo application and purchase a new phone number",
+      "value": "yes"
+    },
+    "NAME": {
+      "description": "The Heroku app name, enter it exactly the same as you have above",
+    },
+    "API_KEY": {
+      "description": "Your Nexmo API Key",
+      "value": "",
+      "required" : false
+    },
+    "API_SECRET": {
+      "description": "Your Nexmo API Secret",
+      "value": "",
+      "required" : false
+    },
+    "CC": {
+      "description": "The ISO 3361 Country Code where you want the number to be purchased eg, US, GB, ES etc.",
+      "value": "",
+      "required" : false
+      
+    },
+    "AUDIO_URL": {
+      "description": "The URL of the audio file you want to play, usually MP3. If you don't select one is selected for you.",
+      "value": "",
+      "required" : false
+      
+    }
+  
+  },
+  "buildpacks": [
+     {
+       "url": "https://github.com/nexmo-community/heroku-buildpack-voice"
+     },
+     {
+        "url": "heroku/python"
+     }
+   ],
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+   }
+  }
+}
