@@ -10,7 +10,7 @@ audio_url = "https://raw.githubusercontent.com/tbedford/git-testing-repo/master/
 
 if 'AUDIO_URL' in os.environ:
     audio_url = os.environ['AUDIO_URL']
-    print("audio_url:" % audio_url)
+    print("audio_url: %s" % audio_url)
 
 if 'NEXMO_NUMBER' in os.environ:
     nexmo_number = os.environ['NEXMO_NUMBER']
