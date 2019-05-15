@@ -17,7 +17,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return "<p>Application running...</p>"
+    return "<p>Call +44-(0)7520635498 and listen to music...</p>"
 
 @app.route("/webhooks/answer")
 def answer_call():
