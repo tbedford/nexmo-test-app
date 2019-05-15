@@ -4,9 +4,9 @@ A Nexmo test application
 
 Useful where you need a simple Voice application for testing purposes.
 
-You call into the Nexmo number, you hear music, for ever. That's it. 
+You call into the Nexmo number, you hear music, for ever. That's it. Also logs out all webhooks to console.
 
-Example use: Testing the Nexmo Proxy you would have Nexmo -> Proxy -> App. The App is any Nexmo app you want to proxy. This test app would do fine for that. 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/tbedford/nexmo-test-app)
 
 ## TODO
 
