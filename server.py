@@ -15,6 +15,10 @@ ncco = [
 
 app = Flask(__name__)
 
+@app.route("/")
+def index():
+    return "<p>Application running...</p>"
+
 @app.route("/webhooks/answer")
 def answer_call():
     params = request.args
