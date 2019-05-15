@@ -10,4 +10,4 @@ You call into the Nexmo number, you hear music, for ever. That's it. Also logs o
 
 ## TODO
 
-- [ ] Click to Deploy on Heroku
+- [x] Click to Deploy on Heroku
