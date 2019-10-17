@@ -1,7 +1,7 @@
 {
   "name": "Nexmo Test App",
-  "description": "Nemxo Test App - call the Nexmo Number to hear music",
-  "repository": "https://github.com/tbedford/nexmo-test-app",
+  "description": "Nexmo Voice App - call the Nexmo Number to hear music",
+  "repository": "https://github.com/tbedford/nexmo-voice-app",
   "logo": "https://avatars0.githubusercontent.com/u/551057?v=3&s=200",
   "env": {
     "CREATE_NEXMO_APP": {
@@ -24,14 +24,12 @@
     "CC": {
       "description": "The ISO 3361 Country Code where you want the number to be purchased eg, US, GB, ES etc.",
       "value": "",
-      "required" : false
-      
+      "required" : false    
     },
     "AUDIO_URL": {
       "description": "The URL of the audio file you want to play, usually MP3. If you don't select one is selected for you.",
       "value": "",
-      "required" : false
-      
+      "required" : false  
     }  
   },
   "buildpacks": [
