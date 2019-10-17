@@ -4,6 +4,20 @@ from flask import Flask, request, jsonify
 from pprint import pprint
 from dotenv import load_dotenv
 
+# If running on Heroku the environment variables are set in Heroku when you click to deploy.
+
+if 'AUDIO_URL' in os.environ:
+    audio_url = os.environ['AUDIO_URL']
+else:
+    print("Set AUDIO_URL")
+    sys.exit(-1) 
+
+if 'NEXMO_NUMBER' in os.environ:
+    nexmo_number = os.environ['NEXMO_NUMBER']
+else:
+    print("Set NEXMO_NUMBER")
+    sys.exit(-1)
+
 ncco = [
     {
         "action": "stream",
@@ -30,17 +44,9 @@ def events():
     pprint(data)
     return ("200")
 
+# For testing locally only
+# Loads .env file from local drive and runs on port 9000
 if __name__ == '__main__':
-    load_dotenv()
-    if 'AUDIO_URL' in os.environ:
-        audio_url = os.environ['AUDIO_URL']
-    else:
-        print("Create a .env file and add AUDIO_URL")
-        sys.exit(-1)
-
-    if 'NEXMO_NUMBER' in os.environ:
-        nexmo_number = os.environ['NEXMO_NUMBER']
-    else:
-        print("Create a .env file and add NEXMO_NUMBER")
-        sys.exit(-1)
+    print("Running locally")
+    load_dotenv() 
     app.run(host="localhost", port=9000)
