@@ -1,19 +1,8 @@
 import os
+import sys
 from flask import Flask, request, jsonify
 from pprint import pprint
 from dotenv import load_dotenv
-
-app = Flask(__name__)
-
-nexmo_number = "447520635498"
-audio_url = "https://raw.githubusercontent.com/tbedford/git-testing-repo/master/tunes/Komiku_Sunset_on_the_beach.mp3"
-
-if 'AUDIO_URL' in os.environ:
-    audio_url = os.environ['AUDIO_URL']
-    print("audio_url: %s" % audio_url)
-
-if 'NEXMO_NUMBER' in os.environ:
-    nexmo_number = os.environ['NEXMO_NUMBER']
 
 ncco = [
     {
@@ -22,7 +11,9 @@ ncco = [
         "streamUrl": [audio_url]
     }
 ]
-    
+
+app = Flask(__name__)
+
 @app.route("/")
 def index():
     return "<p>Call %s and listen to music...</p>" % nexmo_number
@@ -41,4 +32,15 @@ def events():
 
 if __name__ == '__main__':
     load_dotenv()
+    if 'AUDIO_URL' in os.environ:
+        audio_url = os.environ['AUDIO_URL']
+    else:
+        print("Create a .env file and add AUDIO_URL")
+        sys.exit(-1)
+
+    if 'NEXMO_NUMBER' in os.environ:
+        nexmo_number = os.environ['NEXMO_NUMBER']
+    else:
+        print("Create a .env file and add NEXMO_NUMBER")
+        sys.exit(-1)
     app.run(host="localhost", port=9000)
